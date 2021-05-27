@@ -1,0 +1,92 @@
+{% extends 'basetemplate.html' %}
+{% block content %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Employees Attendance</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+
+
+                </div>
+            </div>
+        </div>
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <br>
+        <form  class="form-group " action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table table-bordered " style="background-color: white">
+                <thead class="thead" style=" background-color: #0d3557">
+                <tr style="color: white;">
+                    <th>ID</th>
+                    <th>Name</th>
+                    {#                <th>Date</th>#}
+                    <Th>Attendance</Th>
+
+                </tr>
+
+                </thead>
+                <tbody id="myTable">
+                {% for employee in employee %}
+                    <tr>
+                        <td><input type="checkbox" name="employeeList[]" checked value="{{ employee.id }}" /></td>
+
+                        {#                    <td>{{ employee.id }}</td>#}
+                        {#                    <td><select class="form-control" name="emp-att">#}
+                        {#<label name="emp-att">{{ employee.name }}</label>#}
+                        {#                        {% for employee in employee %}#}
+                        <td>{{ employee.name }}</td>
+                        {#                        <option >{{ employee.name }}</option>#}
+                        {# {% endfor %}#}
+
+                        </select></td>
+                        {#                    <td><input type="date" name="emp_date"></td>#}
+
+                        <td>
+                            <select class="form-control"   name="{{ employee.id }}">
+                                <option value="Present" >Present</option>
+                                <option value="Leave"  >Leave</option>
+                                <option value="Absent"  >Absent</option>
+                            </select>
+{##}
+{#                            <div class="btn-group btn-group-toggle" data-toggle="buttons">#}
+{##}
+{#                                <label class="btn btn-outline-success active">#}
+{#                                    <input type="radio"  name="{{ employee.id }}"    checked> Present#}
+{#                                </label>#}
+{#                                <label class="btn btn-outline-danger">#}
+{#                                    <input type="radio" name="{{ employee.id }}"   > Leave#}
+{#                                </label>#}
+{#                                <label class="btn btn-outline-danger">#}
+{#                                    <input type="radio" name="{{ employee.id }}"   > Absent#}
+{#                                </label>#}
+{#                        </div>#}
+                        </td>
+                        {#<button type="button" class="btn_choose_sent bg_btn_chose_1">#}
+                        {#                        <input type="radio" name="name+{{ employee }}" checked />Present#}
+                        {#                    </button>#}
+                        {#                        <button type="button" class="btn_choose_sent bg_btn_chose_2">#}
+                        {#                            <input type="radio" name="name+{{ employee }}" />Absent#}
+                        {#                        </button>#}
+                        {#                        <button type="button" class="btn_choose_sent bg_btn_chose_3">#}
+                        {#                            <input type="radio" name="name+{{ employee }}" />Leave#}
+                        {#                        </button>#}
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+            <input class="btn btn-success" type="submit" value="Submit" style="margin-left: 450px">
+        </form>
+        </div>
+
+    </main>
+    </div>
+    </div>
+
+
+
+
+{% endblock %}
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
